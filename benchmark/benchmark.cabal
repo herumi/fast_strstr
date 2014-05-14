@@ -15,9 +15,11 @@ executable benchmark
     c-sources:          ../fast_strstr.c
                         algorithms/naive_strstr.c
                         algorithms/volnitsky_strstr.c
+                        algorithms/mie_strstr.cpp
     include-dirs:       ../
                         algorithms/
     cc-options:         -Wall -O3
+    extra-libraries:    stdc++
 
     build-tools:        hsc2hs
 

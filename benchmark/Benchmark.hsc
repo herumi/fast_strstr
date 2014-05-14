@@ -20,8 +20,11 @@ type StrStrFun = CString -> CString -> IO CString
 
 foreign import ccall unsafe "strstr"           strstr           :: StrStrFun
 foreign import ccall unsafe "fast_strstr"      fast_strstr      :: StrStrFun
+foreign import ccall unsafe "mie_strstr"      mie_strstr      :: StrStrFun
+{-
 foreign import ccall unsafe "naive_strstr"     naive_strstr     :: StrStrFun
 foreign import ccall unsafe "volnitsky_strstr" volnitsky_strstr :: StrStrFun
+-}
 
 -- | Unsorts the elements of a list (complexity: O(n * log² n)).
 shuffle :: RandomGen g => g -> [a] -> [a]
@@ -39,8 +42,11 @@ main = do
         bgroup (show nChars) [
               testFun ws content strstr           "strstr()"
             , testFun ws content fast_strstr      "fast_strstr()"
+            , testFun ws content mie_strstr      "mie_strstr()"
+{-
             , testFun ws content naive_strstr     "naive strstr()"
             , testFun ws content volnitsky_strstr "Volnitsky's strstr()"
+-}
             ]
 
     testFun ws content fun funName =
